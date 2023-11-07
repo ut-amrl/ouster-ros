@@ -1,0 +1,15 @@
+<launch>
+  <!--This variable lets us share the nodelet manager of the Ouster with the pcl_to_laser nodelet which means optimized transport in onea single process with multiple threads :) -->
+  <arg name="pcl_device" default="ouster" />  
+  <arg name="manager" default="os_nodelet_mgr" />
+  <arg name="ouster_ns" default="ouster" doc="Override the default namespace of all ouster nodes"/>
+
+  <include file="$(find ouster_ros)/launch/sensor.launch" >
+      <arg name="sensor_hostname" value="os-122213000096.local"/>
+      <arg name="viz" value="false"/>
+      <arg name="lidar_mode" value="2048x10"/>
+      <arg name="metadata"  value="/home/husky/OS1metadata.json"/>
+      <arg name="timestamp_mode" value="TIME_FROM_ROS_TIME"/>
+  </include>
+
+</launch>
